@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().PlaySFX("Coin");
             ScoreManager.instance.CollectCoin();
             this.gameObject.SetActive(false);
         }

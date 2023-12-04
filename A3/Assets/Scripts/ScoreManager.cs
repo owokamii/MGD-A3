@@ -4,19 +4,18 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-
     public Transform player;
 
-    public TMP_Text scoreText;
-    public TMP_Text highscoreText;
-
+    //coin
     public TMP_Text coinText;
-
-    //int score = 0;
-    int highscore = 0;
-
+    public TMP_Text highCoinText;
     int coin = 0;
-    int highcoin = 0;
+    int highCoin = 0;
+
+    //distance
+    public TMP_Text distanceText;
+    public TMP_Text highDistanceText;
+    float highDistance;
 
     private void Awake()
     {
@@ -25,36 +24,40 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        highscore = PlayerPrefs.GetInt("highscore", 0);
-        coin = PlayerPrefs.GetInt("highcoin", 0);
+        // coin
+        highCoin = PlayerPrefs.GetInt("highcoin", 0);
+        coinText.text = coin.ToString() + " coins";
+        highCoinText.text = "Highest amount of coins collected:\n" + highCoin.ToString() + " coins";
 
-        coinText.text = coin.ToString();
-        //highscoreText.text = "high score: " + highscore.ToString();
+        //distance
+        highDistance = PlayerPrefs.GetFloat("highdistance", 0);
+        highDistanceText.text = "Longest distance ran:\n" + highDistance.ToString() + " m";
     }
 
     private void Update()
     {
-        scoreText.text = Mathf.Round(player.position.z).ToString();
-    }
-
-    /*public void Score()
-    {
-        score += 1;
-        scoreText.text = "score: " + score.ToString();
-
-        if (highscore < score)
+        distanceText.text = Mathf.Round(player.position.z).ToString() + " m";
+        if(highDistance < Mathf.Round(player.position.z))
         {
-            PlayerPrefs.SetInt("highscore", score);
+            PlayerPrefs.SetFloat("highdistance", Mathf.Round(player.position.z));
+            highDistanceText.text = "Longest distance ran:\n" + highDistance.ToString() + " m";
         }
-    }*/
+    }
 
     public void CollectCoin()
     {
         coin += 1;
-        coinText.text = coin.ToString();
-        if(highcoin < coin)
+        coinText.text = coin.ToString() + " coins";
+        if(highCoin < coin)
         {
             PlayerPrefs.SetInt("highcoin", coin);
+            highCoinText.text = "Highest amount of coins collected:\n" + highCoin.ToString() + " coins";
         }
+    }
+
+    public void GethighScore()
+    {
+        highCoin = PlayerPrefs.GetInt("highcoin", 0);
+        highDistance = PlayerPrefs.GetFloat("highdistance", 0);
     }
 }

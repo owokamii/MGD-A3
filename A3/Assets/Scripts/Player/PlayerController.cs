@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Animator playerAnimator;
 
+    private Transform playerPos;
     private Vector3 direction;
     private int currentLane = 1;
     private int laneWidth = 1;
@@ -12,9 +13,13 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;
     public float jumpForce;
+    [HideInInspector] public bool isJumping = false;
+
+    public GameObject gameOverUI;
 
     private void Awake()
     {
+        Time.timeScale = 1.0f;
         characterController = GetComponent<CharacterController>();
         playerAnimator = GetComponentInChildren<Animator>();
     }
@@ -26,16 +31,18 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetFloat("MoveSpeed", moveSpeed);
 
-        if(characterController.isGrounded)
+        if (characterController.isGrounded)
         {
             playerAnimator.SetBool("Grounded", true);
+            isJumping = false;
         }
         else
         {
             playerAnimator.SetBool("Grounded", false);
+            isJumping = true;
         }
 
-        SwipeMovement();
+        CheckLane();
     }
 
     private void FixedUpdate()
@@ -43,41 +50,15 @@ public class PlayerController : MonoBehaviour
         characterController.Move(direction * Time.fixedDeltaTime);
     }
 
-    public void SwipeMovement()
+    public void CheckLane()
     {
-        if (characterController.isGrounded)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                Jump();
-            }
-        }
-
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            currentLane--;
-            if(currentLane == -1)
-            {
-                currentLane = 0;
-            }
-        }
-
-        if(Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            currentLane++;
-            if(currentLane == 3)
-            {
-                currentLane = 2;
-            }
-        }
-
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
 
-        if(currentLane == 0)
+        if (currentLane == 0)
         {
             targetPosition += Vector3.left * laneWidth;
         }
-        else if(currentLane == 2)
+        else if (currentLane == 2)
         {
             targetPosition += Vector3.right * laneWidth;
         }
@@ -85,8 +66,42 @@ public class PlayerController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, 60 * Time.fixedDeltaTime);
     }
 
-    private void Jump()
+    public void Jump()
     {
         direction.y = jumpForce;
+    }
+
+    public void MoveLeft()
+    {
+        currentLane--;
+        if (currentLane == -1)
+        {
+            currentLane = 0;
+        }
+    }
+
+    public void MoveRight()
+    {
+        currentLane++;
+        if (currentLane == 3)
+        {
+            currentLane = 2;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("collided enemy");
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0.0f;
+
+        }
+
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            Debug.Log("colidded coin");
+        }
     }
 }
