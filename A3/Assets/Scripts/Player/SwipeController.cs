@@ -44,15 +44,19 @@ public class SwipeController : MonoBehaviour
             }
             else
             {
-                if (startPos.y > endPos.y)
-                {
-                    Debug.Log("Down");
-                }
-                else
+                if (startPos.y < endPos.y)
                 {
                     playerController.Jump();
                     FindObjectOfType<AudioManager>().PlaySFX("Jump");
                 }
+            }
+        }
+        else
+        {
+            if (startPos.y > endPos.y)
+            {
+                playerController.Land();
+                FindObjectOfType<AudioManager>().PlaySFX("Move");
             }
         }
 

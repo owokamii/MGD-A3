@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527180684edd8094b8f7717fa9d1d043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deleteSelfSec: 70
+  destroyTime: 70
 --- !u!1 &5890075175429594531
 GameObject:
   m_ObjectHideFlags: 0

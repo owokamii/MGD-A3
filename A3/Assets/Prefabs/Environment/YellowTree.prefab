@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 7526456603854747863, guid: 7434e29123ae89e4c91f55f520ee4345,
         type: 3}
       propertyPath: m_Name
-      value: Tree Variant
+      value: YellowTree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

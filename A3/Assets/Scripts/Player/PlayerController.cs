@@ -64,11 +64,17 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, 60 * Time.fixedDeltaTime);
+        characterController.center = characterController.center;
     }
 
     public void Jump()
     {
         direction.y = jumpForce;
+    }
+
+    public void Land()
+    {
+        direction.y = -jumpForce;
     }
 
     public void MoveLeft()
@@ -93,15 +99,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("collided enemy");
             gameOverUI.SetActive(true);
             Time.timeScale = 0.0f;
-
-        }
-
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            Debug.Log("colidded coin");
         }
     }
 }

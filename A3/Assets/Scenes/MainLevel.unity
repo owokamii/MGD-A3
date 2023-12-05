@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.7686275, g: 0.76470596, b: 0.7490196, a: 1}
+  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
   m_LinearFogStart: 50
@@ -1012,7 +1012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: 75}
+  m_AnchoredPosition: {x: -0.000011444, y: 69}
   m_SizeDelta: {x: 700, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &774938874
@@ -1042,11 +1042,14 @@ MonoBehaviour:
     up to jump
 
 
-    collect as much coins as you can while avoiding enemies
+    swipe down to land
 
 
-    good
-    luck have fun!'
+    collect as much coins as you can while
+    avoiding enemies
+
+
+    good luck have fun!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 93a329a053573594e96eb91a914951b5, type: 2}
   m_sharedMaterial: {fileID: -6987829336592421513, guid: 93a329a053573594e96eb91a914951b5,
@@ -1370,8 +1373,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985338886}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.52225, y: -20.431173, z: 4.350543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1421,10 +1424,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1708081213}
-  coinText: {fileID: 1790701477}
   highCoinText: {fileID: 2069495014}
-  distanceText: {fileID: 1678131033}
+  coinText: {fileID: 1790701477}
   highDistanceText: {fileID: 1894296391}
+  distanceText: {fileID: 1678131033}
 --- !u!1 &1268088073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3213,7 +3216,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartingRoad
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5901310933208239151, guid: 90ff3708b7ce6ae4c868ee5e57386230,
+        type: 3}
+      propertyPath: destroyTime
+      value: -1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5901310933208239151, guid: 90ff3708b7ce6ae4c868ee5e57386230, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3234,11 +3243,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 261582725770965831, guid: ce0db94cf4b17804a939659d0e5bd855,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 261582725770965831, guid: ce0db94cf4b17804a939659d0e5bd855,
+        type: 3}
+      propertyPath: ForceModule.y.scalar
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 616672766982803987, guid: ce0db94cf4b17804a939659d0e5bd855,
         type: 3}
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 6590142946701989048}
+    - target: {fileID: 1667265638119830648, guid: ce0db94cf4b17804a939659d0e5bd855,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5549062849527373710, guid: ce0db94cf4b17804a939659d0e5bd855,
         type: 3}
       propertyPath: m_LocalPosition.x

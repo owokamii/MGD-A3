@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class DestroySelf : MonoBehaviour
 {
-    public float deleteSelfSec;
-    void Start()
+    public float destroyTime;
+
+    private void Start()
     {
-        Destroy(gameObject, deleteSelfSec);
+        Destroy(gameObject, destroyTime);
     }
 }
