@@ -1404,7 +1404,7 @@ MonoBehaviour:
   - {fileID: 1097538426248754617, guid: 2b4d10c6a14117848b6c92de7f941bdc, type: 3}
   - {fileID: 9187926628997242104, guid: 39ca20806b94b164aacdc1d7c2064d1a, type: 3}
   - {fileID: 6277808046641771362, guid: 66bd45c89c9ba0c4c96353a1479cf214, type: 3}
-  delayTime: 0.5
+  delayTime: 0.45
   spawnDistance: 10
   spawnPos: 50
   minX: -1
