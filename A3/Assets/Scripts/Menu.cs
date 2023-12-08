@@ -21,11 +21,13 @@ public class Menu : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0.0f;
+        swipeController.enabled = false;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
+        swipeController.enabled = true;
     }
 
     public void RestartLevel()

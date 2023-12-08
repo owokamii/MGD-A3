@@ -26,13 +26,10 @@ public class ScoreManager : MonoBehaviour
     {
         // coin
         highcoin = PlayerPrefs.GetInt("highcoin", 0);
-        //highCoinText.text = "Highest amount of coins collected:\n" + highcoin.ToString() + " coins";
-
         coinText.text = coin.ToString() + " coins";
 
         //distance
         highDistance = PlayerPrefs.GetFloat("highdistance", 0);
-        //highDistanceText.text = "Longest distance ran:\n" + highDistance.ToString() + " m";
     }
 
     private void Update()
@@ -52,7 +49,6 @@ public class ScoreManager : MonoBehaviour
         if(highcoin < coin)
         {
             PlayerPrefs.SetInt("highcoin", coin);
-            //highCoinText.text = "Highest amount of coins collected:\n" + highcoin.ToString() + " coins";
         }
     }
 
@@ -60,7 +56,7 @@ public class ScoreManager : MonoBehaviour
     {
         highcoin = PlayerPrefs.GetInt("highcoin", 0);
         highDistance = PlayerPrefs.GetFloat("highdistance", 0);
-        highCoinText.text = "Highest amount of coins collected:\n" + highcoin.ToString() + " coins";
+        highCoinText.text = "Most coins collected:\n" + highcoin.ToString() + " coins";
         highDistanceText.text = "Longest distance ran:\n" + highDistance.ToString() + " m";
     }
 }
