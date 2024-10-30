@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 8955814943800543868}
+  swipeController: {fileID: 0}
   playerAnimator: {fileID: 0}
   moveSpeed: 20
   jumpForce: 10
@@ -403,7 +404,7 @@ PrefabInstance:
     - target: {fileID: 7816020402286467371, guid: 3baee1b29b98dd240827ff32d97bbdce,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7816020402286467371, guid: 3baee1b29b98dd240827ff32d97bbdce,
         type: 3}
@@ -439,6 +440,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717298157011181076, guid: 3baee1b29b98dd240827ff32d97bbdce,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717298157011181076, guid: 3baee1b29b98dd240827ff32d97bbdce,
+        type: 3}
+      propertyPath: ForceModule.y.scalar
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8717298157011181076, guid: 3baee1b29b98dd240827ff32d97bbdce,
         type: 3}

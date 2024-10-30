@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private SwipeController swipeController;
     [SerializeField] private Animator playerAnimator;
 
     private Transform playerPos;
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             gameOverUI.SetActive(true);
+            swipeController.enabled = false;
             Time.timeScale = 0.0f;
         }
     }
